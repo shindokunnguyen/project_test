@@ -14,7 +14,7 @@ class AddBirthdateToUsers extends Migration
     public function up()
     {
         Schema::table('users', function(Blueprint $table) {
-            $table->dateTime('birthdate');
+            $table->date('birthdate');
             $table->integer('user_is_deleted')->default(0);
         });
     }
