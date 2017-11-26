@@ -13,6 +13,38 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        .oneLine {
+            overflow: hidden;
+            height: 24px;
+        }
+        .bg-content {
+            background-color: white;
+        }
+        .bg-comment {
+            background-color: palegoldenrod;
+        }
+        .btn-custom {
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #fff;
+            background-color: #e73827;
+            border-color: #d30a0a;
+        }
+    </style>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/articleController.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.js') }}"></script>
+    <script type="text/javascript">
+        var APP_URL = {!! json_encode(url('/')) !!}
+    </script>
 </head>
 <body>
     <div id="app">
@@ -29,8 +61,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand" href="{{ url('home') }}">
+                        Home
                     </a>
                 </div>
 
@@ -54,6 +86,9 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <a class="" href="{{ route('users.edit',Auth::user()->id) }}">Edit</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -75,16 +110,5 @@
         @yield('content')
     </div>
 
-    <!-- Scripts -->
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-        $( function() {
-            $("#birthdate").datepicker();
-        } );
-    </script>
 </body>
 </html>

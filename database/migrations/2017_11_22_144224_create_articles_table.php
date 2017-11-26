@@ -14,11 +14,11 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->increments('art_id');
-            $table->string('art_title');
-            $table->string('art_content')->nullable();
-            $table->string('art_author')->nullable();
-            $table->integer('art_is_deleted')->default(0);
+            $table->increments('id');
+            $table->string('title');
+            $table->longText('content')->nullable();
+            $table->string('author')->nullable();
+            $table->integer('is_deleted')->default(0);
             $table->timestamps();
         });
     }

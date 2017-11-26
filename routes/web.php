@@ -18,3 +18,20 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// route for user
+Route::resource('users', 'UserController');
+
+// route for article
+Route::resource('articles', 'ArticleController');
+
+// router update like article
+// Route::post('/like/updatelike', 'LikeController@updatelike');
+Route::post('like/updatelike', 'LikeController@updatelike');
+
+// route comment article
+Route::post('comment/add', 'CommentController@add');
+
+// route load list comment by article
+Route::post('comment/loadcomment', 'CommentController@loadcomment');
+

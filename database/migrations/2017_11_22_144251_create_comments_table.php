@@ -14,11 +14,11 @@ class CreateCommentsTable extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->increments('comment_id');
-            $table->string('comment_content');
-            $table->string('comment_art_id');
-            $table->string('comment_user_id');
-            $table->integer('comment_is_deleted')->default(0);
+            $table->increments('id');
+            $table->string('content');
+            $table->string('art_id');
+            $table->string('user_id');
+            $table->integer('is_deleted')->default(0);
             $table->timestamps();
         });
     }
