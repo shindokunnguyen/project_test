@@ -15,6 +15,7 @@ class CommentController extends Controller
             'art_id' => $_REQUEST['art_id'],
             'content' => $_REQUEST['content'],
             'user_id' => Auth::user()->id,
+            'user_name' => Auth::user()->name,
         ];
         Comment::create($aryDataInsert);
         $aryResponse = [
@@ -30,6 +31,7 @@ class CommentController extends Controller
     	// get comment
         $listComment = Comment::where('art_id', $art_id)
                                 // ->take(1)
+                                ->orderBy('id', 'desc')
                                 ->get();
 
         $returnHTML = view('article.listcomment')->with('listComment', $listComment)->render();

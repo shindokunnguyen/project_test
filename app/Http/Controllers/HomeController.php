@@ -28,11 +28,14 @@ class HomeController extends Controller
     public function index()
     {
         // get list articles
-        $articles = Article::where('is_deleted', '=', 0)
-            ->orderBy('id', 'desc')
-            ->take(10)
-//            ->offset(11)
-            ->get();
+//         $articles = Article::where('is_deleted', '=', 0)
+//             ->orderBy('id', 'desc')
+//             ->take(10)
+// //            ->offset(11)
+//             ->get();
+
+        $articles = Article::paginate(3);
+        // return view('users.index',compact('data'));
 
         return view('home', compact('articles'));
     }

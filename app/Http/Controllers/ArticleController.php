@@ -50,6 +50,7 @@ class ArticleController extends Controller
         // get comment
         $listComment = Comment::where('art_id', $article->id)
                                 // ->take(1)
+                                ->orderBy('id', 'desc')
                                 ->get();
 
         // get like

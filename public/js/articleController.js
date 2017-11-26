@@ -107,5 +107,18 @@ var ArticleController = {
 				}
 			}
 		});
+	},
+
+	showHideDropdown: function () {	
+		var status_dropdown = $('#dropdown_show').val();
+		if (status_dropdown == 0) {
+			$('#dropdown_menu').show();
+			$('#dropdown-onwer').addClass('open');
+			$('#dropdown_show').val('1');
+		} else {
+			$('#dropdown_menu').hide();
+			$('#dropdown-onwer').removeClass('open');
+			$('#dropdown_show').val('0');
+		}	
 	}
 };
