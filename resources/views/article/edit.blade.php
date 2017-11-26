@@ -13,27 +13,27 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4>Add new article</h4>
+                    <h4>Edit article</h4>
                 </div>
             </div>
         </div>
         <?php if (count($errors)) { ?>
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                <ul>
+                    @foreach ($errors as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
         <?php } else { ?>
             <div class="alert alert-danger" id="area_show_err" style="display: none"></div>
         <?php } ?>
 
-        {{--{{ Form::open(array('route' => 'articles.store','method'=>'POST')) }}--}}
-            {{--@include('members.form')--}}
-        {{--{{ Form::close() }}--}}
-        <form action="{{route('articles.store')}}" method="POST" class="form-horizontal">
+        <form action="{{route('articles.update', $article->id)}}" method="POST" class="form-horizontal">
+            <input type="hidden" value="PUT" name="_method" />
             {{csrf_field()}}
             @include('article.form')
         </form>

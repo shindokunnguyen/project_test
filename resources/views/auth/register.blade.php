@@ -91,4 +91,9 @@
         </div>
     </div>
 </div>
+<script>
+    $("#birthdate").datepicker(
+        {dateFormat: 'yy/mm/dd'}
+    );
+</script>
 @endsection

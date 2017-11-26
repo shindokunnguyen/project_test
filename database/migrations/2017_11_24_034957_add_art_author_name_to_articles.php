@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLikesTable extends Migration
+class AddArtAuthorNameToArticles extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateLikesTable extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('art_id');
-            $table->string('user_id');
-            $table->timestamps();
+        Schema::table('articles', function(Blueprint $table) {
+            $table->string('author_name');
         });
     }
 
@@ -28,6 +25,6 @@ class CreateLikesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('likes');
+        //
     }
 }
