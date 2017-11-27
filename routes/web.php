@@ -33,3 +33,5 @@ Route::post('comment/add', 'CommentController@add');
 // route load list comment by article
 Route::post('comment/loadcomment', 'CommentController@loadcomment');
 
+// route delete article
+Route::post('article/deletearticle', 'ArticleController@deletearticle');

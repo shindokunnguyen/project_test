@@ -104,6 +104,7 @@ var ArticleController = {
 			success: function (data){
 				if (data.status == 1) {
 					$('#list-comment').html (data.html);
+					$('#please_comment').html('');
 				}
 			}
 		});
@@ -120,5 +121,29 @@ var ArticleController = {
 			$('#dropdown-onwer').removeClass('open');
 			$('#dropdown_show').val('0');
 		}	
+	},
+
+	CheckClickDelete: 0,
+	deleteArticle: function (art_id) {
+		if (ArticleController.CheckClickDelete == 1) return;
+		ArticleController.CheckClickDelete = 1;
+
+		$.ajax({
+			url: APP_URL+'/article/deletearticle',
+			type: 'POST',
+			data: {
+				'_token': $('input[name=_token]').val(),
+				'art_id' : art_id,
+			},
+			dataType: 'json',
+			success: function (data){
+				if (data.status == 1) {
+					alert (data.msg);
+					window.location = APP_URL+"/home";
+				}
+			}
+
+		});
+
 	}
 };

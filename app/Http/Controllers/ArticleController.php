@@ -50,6 +50,7 @@ class ArticleController extends Controller
         // get comment
         $listComment = Comment::where('art_id', $article->id)
                                 // ->take(1)
+                                ->where('is_deleted', 0)
                                 ->orderBy('id', 'desc')
                                 ->get();
 
@@ -112,5 +113,33 @@ class ArticleController extends Controller
         Article::destroy($id);
         return redirect()->route('home')
             ->with('status', 'Article deleted success');
+    }
+
+    public function deletearticle()
+    {
+        $art_id = $_REQUEST['art_id'];
+        $aryDataUpdate = [
+            'is_deleted' => 1
+        ];
+        // delete article
+        Article::where('id', '=', $art_id)
+                ->update($aryDataUpdate);
+
+        // delete comment
+        Comment::where('art_id', '=', $art_id)
+            ->update($aryDataUpdate);
+        
+        // delete like
+        Like::where('art_id', '=', $art_id)
+            ->delete();
+
+        // response to client
+        $aryResponse = [
+            'status' => '1',
+            'msg' => 'Article deleted success',
+        ];
+        return response ()->json ( $aryResponse );
+        // return redirect()->route('home')
+        //     ->with('status', 'Article deleted success');
     }
 }

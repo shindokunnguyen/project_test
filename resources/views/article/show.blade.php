@@ -71,7 +71,7 @@
                         <a class="btn btn-primary" href="{{route('articles.edit', $article->id)}}">Edit Article</a>
                     </div>
                     <div class="panel-heading">
-                        <a class="btn btn-primary" href="{{route('articles.destroy', $article->id)}}">Delete Article</a>
+                        <a class="btn btn-primary" href="javascript:void(0)" onclick="ArticleController.deleteArticle('<?php echo $article->id;?>')">Delete Article</a>
                     </div>
                 <?php } ?>
             </div>
@@ -95,7 +95,7 @@
                     if (count($listComment) == 0) {
                     $pleaseComment = 'Be the first to comment on this article';
                 } ?>
-                <p><h5 style="margin-left: 5px">Comments: <i><?php echo $pleaseComment; ?></i></h5></p>
+                <p><h5 style="margin-left: 5px">Comments: <i id="please_comment"><?php echo $pleaseComment; ?></i></h5></p>
             </div>
             <div id="list-comment">
                 <?php if (count($listComment) > 0 ) { ?>

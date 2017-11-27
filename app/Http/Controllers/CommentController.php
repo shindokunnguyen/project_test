@@ -30,6 +30,7 @@ class CommentController extends Controller
     	$art_id = $_REQUEST['art_id'];
     	// get comment
         $listComment = Comment::where('art_id', $art_id)
+                                ->where('is_deleted', 0)
                                 // ->take(1)
                                 ->orderBy('id', 'desc')
                                 ->get();
